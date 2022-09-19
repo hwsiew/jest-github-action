@@ -23,6 +23,9 @@ inputs:
   check-name:
     description: "Status check name"
     required: true
+  comment-header:
+    description: "Text to prefix in front of coverage header"
+    default: ""
 
 runs:
   using: "node12"
