@@ -25,6 +25,7 @@ inputs:
     required: true
   comment-header:
     description: "Text to prefix in front of coverage header"
+    required: false
     default: ""
 
 runs:

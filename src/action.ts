@@ -13,7 +13,7 @@ import { createCoverageMap, CoverageMapData } from "istanbul-lib-coverage"
 import type { FormattedTestResults } from "@jest/test-result/build/types"
 
 const ACTION_NAME = "jest-github-action"
-const COVERAGE_HEADER = ":loop: **Code coverage**\n\n"
+const COVERAGE_HEADER = ":loop: **Code coverage**"
 
 export async function run() {
   let workingDirectory = core.getInput("working-directory", { required: false })
@@ -148,8 +148,9 @@ function getCheckPayload(results: FormattedTestResults, cwd: string) {
 }
 
 function getCoverageHeader() {
-  let commentHeader = core.getInput("comment-header", { required: false })
-  return !commentHeader ? COVERAGE_HEADER : `${commentHeader} ${COVERAGE_HEADER}`;
+  let commentHeader = core.getInput("comment-header", { required: false });
+  console.debug("Check comment header: %j", commentHeader)
+  return (!commentHeader ? COVERAGE_HEADER : `${COVERAGE_HEADER} ${commentHeader}`) + "\n\n";
 }
 
 function getJestCommand(resultsFile: string) {
