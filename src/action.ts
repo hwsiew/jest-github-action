@@ -56,7 +56,8 @@ export async function run() {
     if (!results.success) {
       core.setFailed("Some jest tests failed.")
     }
-  } catch (error) {
+  } catch (err) {
+    const error = err as Error;
     console.error(error)
     core.setFailed(error.message)
   }
@@ -102,6 +103,7 @@ export function getCoverageTable(
   }
 
   for (const [filename, data] of Object.entries(covMap.data || {})) {
+    // @ts-ignore:
     const { data: summary } = data.toSummary()
     rows.push([
       filename.replace(cwd, ""),
