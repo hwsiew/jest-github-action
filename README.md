@@ -18,7 +18,7 @@ Main features:
 You can now consume the action by referencing the v1 branch
 
 ```yaml
-uses: mattallty/jest-github-action@v1
+uses: hwsiew/jest-github-action@v1
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
@@ -29,7 +29,7 @@ By default, this action will execute `npm test` to run your tests.
 You can change this behavior by providing a custom `test-command` like this:
 
 ```yaml
-uses: mattallty/jest-github-action@v1
+uses: hwsiew/jest-github-action@v1
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 with:
@@ -40,7 +40,7 @@ with:
 ### Running tests only on changed files
 
 ```yaml
-uses: mattallty/jest-github-action@v1
+uses: hwsiew/jest-github-action@v1
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 with:
@@ -52,7 +52,7 @@ with:
 ### Silencing the code coverage comment
 
 ```yaml
-uses: mattallty/jest-github-action@v1
+uses: hwsiew/jest-github-action@v1
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 with:
@@ -65,12 +65,23 @@ with:
 For running tests in folders other than root, supply a working-directory.
 
 ```yaml
-uses: mattallty/jest-github-action@v1
+uses: hwsiew/jest-github-action@v1
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 with:
   working-directory: "frontend"
 ```
 
+### To add multiple comment 
+
+For running tests in folders other than root, supply a working-directory.
+
+```yaml
+uses: hwsiew/jest-github-action@v1
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+with:
+  comment-header: "packages/api"
+```
 
 See the [actions tab](https://github.com/mattallty/jest-github-action/actions) for runs of this action! :rocket:

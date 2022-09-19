@@ -72,7 +72,7 @@ async function deletePreviousComments(octokit: GitHub) {
     data
       .filter(
         (c) =>
-          c.user.login === "github-actions[bot]" && c.body.startsWith(COVERAGE_HEADER),
+          c.user.login === "github-actions[bot]" && c.body.startsWith(getCoverageHeader()),
       )
       .map((c) => octokit.issues.deleteComment({ ...context.repo, comment_id: c.id })),
   )
@@ -112,7 +112,7 @@ export function getCoverageTable(
     ])
   }
 
-  return COVERAGE_HEADER + table(rows, { align: ["l", "r", "r", "r", "r"] })
+  return getCoverageHeader() + table(rows, { align: ["l", "r", "r", "r", "r"] })
 }
 
 function getCommentPayload(body: string) {
@@ -145,6 +145,11 @@ function getCheckPayload(results: FormattedTestResults, cwd: string) {
   }
   console.debug("Check payload: %j", payload)
   return payload
+}
+
+function getCoverageHeader() {
+  let commentHeader = core.getInput("comment-header", { required: false })
+  return !commentHeader ? COVERAGE_HEADER : `${commentHeader} ${COVERAGE_HEADER}`;
 }
 
 function getJestCommand(resultsFile: string) {
