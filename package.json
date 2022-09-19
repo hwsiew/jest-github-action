@@ -22,7 +22,7 @@
     "Jest",
     "Pull request"
   ],
-  "author": "Matthias Etienne <matthias@etienne.in>",
+  "author": "Hong Wei, Siew <hw.siew.work@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mattallty/jest-github-action/issues"
